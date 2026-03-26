@@ -1,0 +1,22 @@
+name: WrapForge Sync
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  wrapforge-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: movermon/wrapforge/sync-action@main
+        with:
+          mode: enforce
+          config-path: wrapforge.yaml
+          api-base-url: https://wrapforge.dev

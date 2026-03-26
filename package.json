@@ -1,0 +1,15 @@
+{
+  "name": "wrapforge-sync-action",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist --license licenses.txt"
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "js-yaml": "^4.1.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.0"
+  }
+}

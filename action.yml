@@ -1,0 +1,46 @@
+name: 'WrapForge Sync Check'
+description: 'Validate wrapforge.yaml against WrapForge API'
+author: 'WrapForge'
+
+inputs:
+  mode:
+    description: 'audit or sync'
+    required: false
+    default: 'audit'
+  config-path:
+    description: 'Path to wrapforge.yaml'
+    required: false
+    default: 'wrapforge.yaml'
+  api-base-url:
+    required: false
+    default: 'https://wrapforge.dev'
+  oidc-audience:
+    required: false
+    default: 'wrapforge-sync-action'
+  timeout-ms:
+    required: false
+    default: '15000'
+  outage-policy:
+    description: 'fail-closed or fail-open'
+    required: false
+    default: 'fail-closed'
+  local-fallback:
+    required: false
+    default: 'true'
+  annotate-pr:
+    required: false
+    default: 'true'
+
+outputs:
+  result:
+    description: 'pass | fail | soft-pass'
+  mode-effective:
+    description: 'Mode actually executed'
+  remote-executed:
+    description: 'true if remote validation ran'
+  fallback-executed:
+    description: 'true if local fallback ran'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
