@@ -4,7 +4,7 @@ author: 'WrapForge'
 
 inputs:
   mode:
-    description: 'audit or sync'
+    description: 'audit, sync, or enforce (enforce is an alias for sync)'
     required: false
     default: 'audit'
   config-path:

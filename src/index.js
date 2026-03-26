@@ -11,9 +11,12 @@ const REQUIRED_TOP_LEVEL_KEYS = ['service', 'version', 'endpoints'];
 // ── Input Validation ─────────────────────────────────────────────────────────
 
 function validateInputs() {
-  const mode = core.getInput('mode');
+  let mode = core.getInput('mode');
+  if (mode === 'enforce') {
+    mode = 'sync'; // enforce is an alias for sync
+  }
   if (mode !== 'audit' && mode !== 'sync') {
-    throw new Error(`Invalid mode: "${mode}". Must be "audit" or "sync".`);
+    throw new Error(`Invalid mode: "${mode}". Must be "audit", "sync", or "enforce".`);
   }
 
   const outagePolicy = core.getInput('outage-policy');
